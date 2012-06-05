@@ -97,10 +97,8 @@ module ObjectDaddy
         self.generators = (superclass.generators).merge(generators).dup
       end
 
-      exemplar_path.each do |raw_path|
-        path = File.join(raw_path, "#{underscore(name)}_exemplar.rb")
-        load(path) if File.exists?(path)
-      end
+      path = File.join(exemplar_path, "#{underscore(name)}_exemplar.rb")
+      load(path) if File.exists?(path)
       
       self.exemplars_generated = true
     end
